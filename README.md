@@ -70,3 +70,13 @@ Refer to ./examples/*
 ## Testing
 Tests are performed by [ThrowTheSwitch/Unity](https://github.com/ThrowTheSwitch/Unity).
 Tests need to be compiled with the Unity library prior to executing.
+
+Setup;
+```
+sh ./scripts/setup_tests.sh
+```
+
+Executing;
+```
+sh ./scripts/test.sh
+```

@@ -3,7 +3,6 @@
 #include <stdbool.h>
 #include <malloc.h>
 
-// Creates a new list, ListEntry->data is typeof void*, cast this to YourType*
 List * listCreate() {
   List *list = malloc(sizeof(List));
   list->start = NULL;
@@ -12,7 +11,6 @@ List * listCreate() {
   return list;
 }
 
-// Add data to the list, returns a pointer to its entry.
 ListEntry * listAdd(List *list, void *data) {
   //Create the list entry
   ListEntry *entry = malloc(sizeof(ListEntry));
@@ -27,7 +25,6 @@ ListEntry * listAdd(List *list, void *data) {
   return entry;
 }
 
-// Add an entry to the list and update the entries
 void listAddEntry(List *list, ListEntry *entry) {
   //Is this the first / only thing in the list?
   if(list->start == NULL) {
@@ -44,7 +41,6 @@ void listAddEntry(List *list, ListEntry *entry) {
 }
 
 
-// Remove an entry from the array. Optionally free the data at that entry.
 void listRemove(List *list, ListEntry *entry, bool freeData) {
   //Update next and prev
   if(entry->prev != NULL) entry->prev->next = entry->next;
@@ -60,8 +56,9 @@ void listRemove(List *list, ListEntry *entry, bool freeData) {
   list->size--;
 }
 
-// Get an entry in the list by its position (costly)
 ListEntry * listGetByIndex(List *list, int index) {
+  if(index >= list->size) return NULL;
+
   //TODO: We can probably make this more efficient by deciding which way we 
   //should loop from based on the list size.
 
@@ -77,25 +74,19 @@ ListEntry * listGetByIndex(List *list, int index) {
   return NULL;
 }
 
-// Get the index of an entry (costly)
 int listGetIndex(List *list, ListEntry *entry) {
   int i = 0;
   ListEntry *previous = list->start;
 
   while(previous != NULL) {
-    if(previous == entry) break;
+    if(previous == entry) return i;
     i++;
     previous = previous->next;
   }
   
-  return i;
+  return -1;
 }
 
-
-/*
- * Destroys a list, if freeData is provided then the data within the list will
- * also be freed
- */
 void listDispose(List *list, bool freeData) {
   //Free all of the entries
   ListEntry *next = list->start;
