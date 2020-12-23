@@ -3,7 +3,9 @@ compiler:
   - gcc
 
 install:
-  - ./scripts/setup_test.sh
+  - chmod +x ./scripts/setup_test.sh
+  - chmod +x ./scripts/test.sh
+  - sh ./scripts/setup_test.sh
 
 script:
-  - ./scripts/test.sh
+  - sh ./scripts/test.sh
