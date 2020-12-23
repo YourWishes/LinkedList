@@ -11,9 +11,6 @@ int main() {
   while(true) {
     List *list = listCreate();
 
-    ListEntry *entry;
-    listAddEntry(list, entry);
-
     for(int j = 0; j < 99999; j++) {
       int* integerArray = malloc(sizeof(int));
       *integerArray = j;
