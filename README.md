@@ -64,7 +64,9 @@ while(loop != NULL) {
 }
 ```
 
-
-
 ## Examples
 Refer to ./examples/*
+
+## Testing
+Tests are performed by [ThrowTheSwitch/Unity](https://github.com/ThrowTheSwitch/Unity).
+Tests need to be compiled with the Unity library prior to executing.
