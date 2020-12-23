@@ -25,7 +25,6 @@ typedef struct {
   ListEntry *end;
 } List;
 
-//Method definitions
 
 /**
  * Creates a new linked list
